@@ -1,0 +1,24 @@
+{
+  "name": "reactredux",
+  "version": "1.0.0",
+  "description": "Aplicação de teste utilizado para o curso React + Redux, da Udemy",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --progress --colors --inline --hot"
+  },
+  "author": "Vagner Praia <vagnerpraia@gmail.com> (https://github.com/vagnerpraia)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "react": "^16.2.0",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}
