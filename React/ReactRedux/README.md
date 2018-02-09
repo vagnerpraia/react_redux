@@ -1,12 +1,12 @@
 # React + Redux (Udemy)
 Repositório de treinamento do curso React + Redux da Udemy com o instrutor Leonardo Moura Leitao.
 
-* [Udemy](https://www.udemy.com/)
 * [React + Redux](https://www.udemy.com/react-redux-pt/)
+* [Udemy](https://www.udemy.com/)
 * [Leonardo Moura Leitao](https://www.udemy.com/user/leonardomouraleitao/)
 
-# Overview do curso no Udemy
-## Sobre este curso
+## Overview do curso no Udemy
+### Sobre este curso
 Aprenda React, Redux, Webpack, Redux-Form, MongoDB, Express, Node... Vários exercícios práticos e Duas Apps do ZERO!
 
 ### Pelos números
