@@ -2,7 +2,12 @@ import React from 'react'
 
 export default (props) => (
     <form name='form'>
-        {props.children}
-        <input type="submit" value="Entrar" />
+        {
+            React.Children.map(
+                props.children,
+                child => React.cloneElement(child, {...props})
+            )
+        }
+        <input type='submit' value='Entrar' />
     </form>
 )

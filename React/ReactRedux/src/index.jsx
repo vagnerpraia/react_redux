@@ -10,8 +10,8 @@ import './css/estilo'
 ReactDOM.render(
     <div>
         <Cabecalho texto='React + Redux' />
-        <Login teste='teste'>
-            <Basico label='E-mail' name='email' value='' />
+        <Login teste='Fonte: Usuário'>
+            <Avancado label='E-mail' name='email' value='' placeholder='Digite o e-mail' />
             <Avancado label='Senha' name='senha' value='' placeholder='Digite a senha' />
         </Login>
     </div>

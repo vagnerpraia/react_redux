@@ -16,6 +16,6 @@ export const Avancado = (props) => (
     <div>
         {props.label + ': ' }
         <input type="text" name={props.name} defaultValue={props.value} placeholder={props.placeholder} onChange={servico(props.value)} />
-        {props.teste}
+        {' ' +props.teste}
     </div>
 )
