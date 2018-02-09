@@ -1,13 +1,9 @@
 import React from 'react'
+import { clonarChildrenProps } from '../Utils/util'
 
 export default (props) => (
     <form name='form'>
-        {
-            React.Children.map(
-                props.children,
-                child => React.cloneElement(child, {...props})
-            )
-        }
+        {clonarChildrenProps(props)}
         <input type='submit' value='Entrar' />
     </form>
 )
