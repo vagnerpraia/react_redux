@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 
-import Login from '../Components/login'
-import { Basico, Avancado } from '../Components/entradaTexto'
+import Formulario from '../Basics/Formulario'
+import { Basico, Avancado } from '../Basics/EntradaTexto'
 
-export default class Principal extends Component {
+export default class Login extends Component {
     render(){
         return(
-            <div id='Principal' className='inner-container'>
-                <Login teste='Fonte: Usuário'>
+            <div id='Login'>
+                <Formulario teste='Fonte: Usuário'>
                     <Avancado label='E-mail' name='email' value='' placeholder='Digite o e-mail' />
                     <Avancado label='Senha' name='senha' value='' placeholder='Digite a senha' />
-                </Login>
+                </Formulario>
             </div>
         )
     }

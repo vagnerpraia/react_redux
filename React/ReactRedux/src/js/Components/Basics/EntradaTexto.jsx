@@ -5,7 +5,7 @@ const servico = (valor) => {
 }
 
 export const Basico = (props) => (
-    <div>
+    <div id='EntradaTexto-Basico'>
         {props.label + ': '}
         <input type="text" name={props.name} defaultValue={props.value} />
         {props.teste}
@@ -13,7 +13,7 @@ export const Basico = (props) => (
 )
 
 export const Avancado = (props) => (
-    <div>
+    <div id='EntradaTexto-Avancado'>
         {props.label + ': ' }
         <input type="text" name={props.name} defaultValue={props.value} placeholder={props.placeholder} onChange={servico(props.value)} />
         {' ' + props.teste}
