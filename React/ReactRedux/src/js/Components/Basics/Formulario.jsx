@@ -1,5 +1,5 @@
 import React from 'react'
-import { clonarChildrenProps } from '../../Utils/util'
+import { clonarChildrenProps } from 'utils/util'
 
 export default (props) => (
     <div id='Formulario'>

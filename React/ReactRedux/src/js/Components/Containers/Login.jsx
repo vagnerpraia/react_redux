@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import Formulario from '../Basics/Formulario'
-import { Basico, Avancado } from '../Basics/EntradaTexto'
+import Formulario from 'components/basics/Formulario'
+import { Basico, Avancado } from 'components/basics/EntradaTexto'
 
 export default class Login extends Component {
     render(){

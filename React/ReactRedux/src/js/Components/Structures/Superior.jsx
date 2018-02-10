@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import BarraAcessibilidade from '../Containers/BarraAcessibilidade'
-import Menu from '../Containers/Menu'
-import Login from '../Containers/Login'
+import BarraAcessibilidade from 'components/containers/BarraAcessibilidade'
+import Menu from 'components/containers/Menu'
+import Login from 'components/containers/Login'
 
 export default class Superior extends Component {
     render(){

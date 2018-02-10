@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import Superior from './Components/Structures/Superior'
-import Principal from './Components/Structures/Principal'
-import Inferior from './Components/Structures/Inferior'
+import Superior from 'components/structures/Superior'
+import Principal from 'components/structures/Principal'
+import Inferior from 'components/structures/Inferior'
 
 import '../css/estilo'
 
