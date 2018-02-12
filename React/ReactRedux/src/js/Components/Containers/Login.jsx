@@ -8,8 +8,8 @@ export default class Login extends Component {
         return(
             <div id='Login'>
                 <Formulario teste='Fonte: Usuário'>
-                    <Avancado label='E-mail' name='email' value='' placeholder='Digite o e-mail' />
-                    <Avancado label='Senha' name='senha' value='' placeholder='Digite a senha' />
+                    <Avancado label='E-mail' name='email' placeholder='Digite o e-mail' />
+                    <Avancado label='Senha' name='senha' placeholder='Digite a senha' />
                 </Formulario>
             </div>
         )

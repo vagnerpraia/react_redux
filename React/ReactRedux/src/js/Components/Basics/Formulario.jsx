@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { Component } from 'react'
+
 import { clonarChildrenProps } from 'utils/util'
 
-export default (props) => (
-    <div id='Formulario'>
-        <form name='form'>
-            {clonarChildrenProps(props)}
-            <input type='submit' value='Entrar' />
-        </form>
-    </div>
-)
+export default class Formulario extends Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            usuario: ''
+        }
+    }
+
+    verificarNomeFormulario(){
+        this.props.children.forEach((p) => {
+            if(p.props.name == 'email'){
+                this.setState({
+                    ...this.state,
+                    usuario: p.props.value
+                })
+            }
+        })
+    }
+
+    render(){
+        return(
+            <div id='Formulario'>
+                <p>{this.state.usuario}</p>
+                <form name='form'>
+                    {clonarChildrenProps(this.props)}
+                    <input type='submit' value='Entrar' onClick={() => this.verificarNomeFormulario()} />
+                </form>
+            </div>
+        )
+    }
+}
