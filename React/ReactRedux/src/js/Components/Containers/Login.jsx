@@ -13,19 +13,22 @@ export default class Login extends Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.verificarUsuario = this.verificarUsuario.bind(this);
     }
 
     handleChange(event) {
         this.setState({...this.state, [event.target.name]: event.target.value});
     }
 
-    verificarUsuario(){
-        let token = ''
+    verificarUsuario(test){
+        let token = {}
 
         if(this.state.email == '1' && this.state.senha == '1'){
-            token = {tipo: 'Representante de OSC'}
-        }if(this.state.email == '2' && this.state.senha == '2'){
-            token = {tipo: 'Representante de OSC'}
+            token.mensagem = 'Representante de OSC'
+        }else if(this.state.email == '2' && this.state.senha == '2'){
+            token.mensagem = 'Representante de governo'
+        }else{
+            token.mensagem = 'E-mail e/ou senha incorreto(s).'
         }
 
         console.log(token)
@@ -38,8 +41,8 @@ export default class Login extends Component {
                     <label>Email: </label>
                     <input type='text' name='email' placeholder='Digite o e-mail' value={this.state.email} onChange={this.handleChange}/>
                     <label>Senha: </label>
-                    <input type='text' name='senha' placeholder='Digite a senha' value={this.state.senha} onChange={(e) => this.handleChange(e)}/>
-                    <input type='button' value='Entrar' onClick={() => this.verificarUsuario()}/>
+                    <input type='text' name='senha' placeholder='Digite a senha' value={this.state.senha} onChange={this.handleChange}/>
+                    <input type='button' value='Entrar' onClick={this.verificarUsuario}/>
                 </form>
             </div>
         )
