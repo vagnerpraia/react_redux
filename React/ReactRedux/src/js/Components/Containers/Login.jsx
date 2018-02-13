@@ -9,40 +9,67 @@ export default class Login extends Component {
 
         this.state = {
             email: '',
-            senha: ''
+            senha: '',
+            mensagem: ''
         }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.verificarUsuario = this.verificarUsuario.bind(this);
+        this.atualizarTexto = this.atualizarTexto.bind(this);
+        this.entrar = this.entrar.bind(this);
+        this.cancelar = this.cancelar.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({...this.state, [event.target.name]: event.target.value});
+    atualizarState(chave, valor) {
+        this.setState({...this.state, [chave]: valor});
     }
 
-    verificarUsuario(test){
+    atualizarTexto(evento){
+        this.atualizarState(evento.target.name, evento.target.value)
+    }
+
+    entrar(){
         let token = {}
+        let mensagem = ''
 
-        if(this.state.email == '1' && this.state.senha == '1'){
-            token.mensagem = 'Representante de OSC'
-        }else if(this.state.email == '2' && this.state.senha == '2'){
-            token.mensagem = 'Representante de governo'
+        if(this.state.email && this.state.senha){
+            if(this.state.email == '1' && this.state.senha == '1'){
+                mensagem = ''
+                token = '123456abc'
+            }else if(this.state.email == '2' && this.state.senha == '2'){
+                mensagem = ''
+                token = 'abc123456'
+            }else{
+                mensagem = 'E-mail e/ou senha incorreto(s).'
+            }
         }else{
-            token.mensagem = 'E-mail e/ou senha incorreto(s).'
+            mensagem = 'Necessário informar e-mail e senha.'
         }
 
-        console.log(token)
+        this.atualizarState('mensagem', mensagem);
+    }
+
+    cancelar(){
+        console.log('cancelar')
     }
 
     render(){
         return(
             <div id='Login'>
                 <form>
-                    <label>Email: </label>
-                    <input type='text' name='email' placeholder='Digite o e-mail' value={this.state.email} onChange={this.handleChange}/>
-                    <label>Senha: </label>
-                    <input type='text' name='senha' placeholder='Digite a senha' value={this.state.senha} onChange={this.handleChange}/>
-                    <input type='button' value='Entrar' onClick={this.verificarUsuario}/>
+                    <div>
+                        <label>E-mail: <span>(Campo Obrigatório)</span></label>
+                        <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.atualizarTexto}/>
+                    </div>
+                    <div>
+                        <label>Senha: <span>(Campo Obrigatório)</span></label>
+                        <input type='password' name='senha' placeholder='Senha' value={this.state.senha} onChange={this.atualizarTexto}/>
+                    </div>
+                    <div>
+                        <input type='button' name='entrar' value='Entrar' onClick={this.entrar}/>
+                        <input type='button' name='cancelar' value='Cancelar' onClick={this.cancelar}/>
+                    </div>
+                    <div>
+                        <span>{this.state.mensagem}</span>
+                    </div>
                 </form>
             </div>
         )
