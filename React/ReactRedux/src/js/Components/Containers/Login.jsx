@@ -15,18 +15,15 @@ export default class Login extends Component {
 
         this.atualizarTexto = this.atualizarTexto.bind(this);
         this.entrar = this.entrar.bind(this);
-        this.cancelar = this.cancelar.bind(this);
-    }
-
-    atualizarState(chave, valor) {
-        this.setState({...this.state, [chave]: valor});
     }
 
     atualizarTexto(evento){
-        this.atualizarState(evento.target.name, evento.target.value)
+        this.setState({[evento.target.name]: evento.target.value});
     }
 
     entrar(){
+        console.log(this.state)
+
         let token = {}
         let mensagem = ''
 
@@ -44,33 +41,26 @@ export default class Login extends Component {
             mensagem = 'Necessário informar e-mail e senha.'
         }
 
-        this.atualizarState('mensagem', mensagem);
-    }
-
-    cancelar(){
-        console.log('cancelar')
+        this.setState({'mensagem': mensagem});
     }
 
     render(){
         return(
             <div id='Login'>
-                <form>
-                    <div>
-                        <label>E-mail: <span>(Campo Obrigatório)</span></label>
-                        <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.atualizarTexto}/>
-                    </div>
-                    <div>
-                        <label>Senha: <span>(Campo Obrigatório)</span></label>
-                        <input type='password' name='senha' placeholder='Senha' value={this.state.senha} onChange={this.atualizarTexto}/>
-                    </div>
-                    <div>
-                        <input type='button' name='entrar' value='Entrar' onClick={this.entrar}/>
-                        <input type='button' name='cancelar' value='Cancelar' onClick={this.cancelar}/>
-                    </div>
-                    <div>
-                        <span>{this.state.mensagem}</span>
-                    </div>
-                </form>
+                <div>
+                    <label>E-mail: <span>(Campo Obrigatório)</span></label>
+                    <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.atualizarTexto}/>
+                </div>
+                <div>
+                    <label>Senha: <span>(Campo Obrigatório)</span></label>
+                    <input type='password' name='senha' placeholder='Senha' value={this.state.senha} onChange={this.atualizarTexto}/>
+                </div>
+                <div>
+                    <input type='button' name='entrar' onClick={this.entrar} value='Entrar'/>
+                </div>
+                <div>
+                    <span>{this.state.mensagem}</span>
+                </div>
             </div>
         )
     }
