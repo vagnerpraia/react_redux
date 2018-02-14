@@ -1,11 +1,12 @@
 {
   "name": "reactredux",
   "version": "1.0.0",
-  "description": "Aplicação de teste utilizado para o curso React + Redux, da Udemy",
+  "description": "Aplicação de teste utilizado para o curso React + Redux da Udemy",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --colors --inline --hot"
   },
+  "keywords": ["react", "javascript"],
   "author": "Vagner Praia <vagnerpraia@gmail.com> (https://github.com/vagnerpraia)",
   "license": "ISC",
   "devDependencies": {
