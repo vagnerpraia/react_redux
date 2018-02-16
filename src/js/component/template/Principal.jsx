@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 
-import Index from 'component/page/Index'
-
+import { clonarChildrenProps } from 'util/clonagem'
 export default class Principal extends Component {
     render(){
         return(
             <div id='Principal'>
-                <Index/>
+                {clonarChildrenProps(this.props)}
             </div>
         )
     }
