@@ -6,7 +6,7 @@ export default class Principal extends Component {
     render(){
         return(
             <div id='Principal'>
-                <Index />
+                <Index/>
             </div>
         )
     }
