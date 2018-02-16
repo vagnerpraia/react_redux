@@ -6,14 +6,14 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         path: __dirname + '/public',
-        filename: './App.js'
+        filename: './app.js'
     },
     devServer: {
         port: 8080,
         contentBase: './public'
     },
     plugins: [
-        new ExtractTextPlugin('App.css')
+        new ExtractTextPlugin('app.css')
     ],
     resolve: {
         modules: [path.resolve(__dirname, 'src/js'), path.resolve(__dirname, 'src/css'), 'node_modules'],
