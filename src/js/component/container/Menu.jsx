@@ -4,12 +4,22 @@ export default class Menu extends Component {
     render(){
         return(
             <div id='Menu'>
-                <ul>
-                    <li>Home</li>
-                    <li>O Mapa</li>
-                    <li>Contato</li>
-                    <li>Entrar</li>
-                </ul>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href='#'>Home</a>
+                        </li>
+                        <li>
+                            <a href='#'>O Mapa</a>
+                        </li>
+                        <li>
+                            <a href='#'>Contato</a>
+                        </li>
+                        <li>
+                            <a href='#'>Entrar</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         )
     }
