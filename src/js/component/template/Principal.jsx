@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Index from 'components/pages/Index'
+import Index from 'component/page/Index'
 
 export default class Principal extends Component {
     render(){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { clonarChildrenProps } from 'utils/util'
+import { clonarChildrenProps } from 'util/clonagem'
 
 export default class Formulario extends Component {
     constructor(props){

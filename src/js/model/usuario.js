@@ -1,4 +1,4 @@
-import { validarEmail, validarrSet } from 'utils/validacao'
+import { validarEmail, validarrSet } from 'util/validacao'
 
 export default class Usuario {
     constructor(){
