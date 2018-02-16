@@ -13,11 +13,11 @@ export default class Login extends Component {
             mensagem: ''
         }
 
-        this.atualizarTexto = this.atualizarTexto.bind(this);
+        this.atualizarEstado = this.atualizarEstado.bind(this);
         this.entrar = this.entrar.bind(this);
     }
 
-    atualizarTexto(evento){
+    atualizarEstado(evento){
         this.setState({[evento.target.name]: evento.target.value});
     }
 
@@ -49,11 +49,11 @@ export default class Login extends Component {
             <div id='Login'>
                 <div>
                     <label>E-mail: <span>(Campo Obrigatório)</span></label>
-                    <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.atualizarTexto}/>
+                    <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.atualizarEstado}/>
                 </div>
                 <div>
                     <label>Senha: <span>(Campo Obrigatório)</span></label>
-                    <input type='password' name='senha' placeholder='Senha' value={this.state.senha} onChange={this.atualizarTexto}/>
+                    <input type='password' name='senha' placeholder='Senha' value={this.state.senha} onChange={this.atualizarEstado}/>
                 </div>
                 <div>
                     <input type='button' name='entrar' onClick={this.entrar} value='Entrar'/>
