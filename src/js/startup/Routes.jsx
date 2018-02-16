@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, Switch } from 'react-router'
 import { HashRouter, Route } from 'react-router-dom'
 
-import App from 'App'
+import Template from 'startup/Template'
 import Index from 'component/page/Index'
 import Apoio from 'component/page/Apoio'
 import BaseDados from 'component/page/BaseDados'
@@ -22,8 +22,8 @@ import Tutoriais from 'component/page/Tutoriais'
 import Versao from 'component/page/Versao'
 
 export default class Routes extends Component {
-    carregarPagina(componente){
-        return <App pagina={componente}/>
+    carregarPagina(componentePagina){
+        return <Template pagina={componentePagina}/>
     }
 
     render(){
