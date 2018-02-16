@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+import TituloSecao from 'component/basic/TituloSecao'
+
 export default class Mapa extends Component {
     render(){
         return(
             <div id='Mapa'>
-                <h2>Mapa Page</h2>
+                <TituloSecao titulo='Mapa'/>
             </div>
         )
     }

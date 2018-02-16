@@ -4,7 +4,7 @@ export default class Index extends Component {
     render(){
         return(
             <div id='Index'>
-                <h2>Index Page</h2>
+                <h1>Index</h1>
             </div>
         )
     }

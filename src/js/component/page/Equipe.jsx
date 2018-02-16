@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+import TituloSecao from 'component/basic/TituloSecao'
+
 export default class Equipe extends Component {
     render(){
         return(
             <div id='Equipe'>
-                <h2>Equipe Page</h2>
+                <TituloSecao titulo='Equipe'/>
             </div>
         )
     }

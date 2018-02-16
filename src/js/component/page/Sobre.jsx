@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+import TituloSecao from 'component/basic/TituloSecao'
+
 export default class Sobre extends Component {
     render(){
         return(
             <div id='Sobre'>
-                <h2>Sobre Page</h2>
+                <TituloSecao titulo='Sobre'/>
             </div>
         )
     }

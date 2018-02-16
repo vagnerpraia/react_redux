@@ -10,6 +10,9 @@ export default class Menu extends Component {
                             <a href='/#'>Home</a>
                         </li>
                         <li>
+                            <a href='/#apoio'>Apoio</a>
+                        </li>
+                        <li>
                             <a href='/#mapa'>O Mapa</a>
                         </li>
                         <li>
