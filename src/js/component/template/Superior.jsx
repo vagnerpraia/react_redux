@@ -18,7 +18,7 @@ export default class Superior extends Component {
                     <p>Ipea</p>
                 </div>
                 <div id='LogoMapa-Superior'>
-                    <h1>Mapa das Organizações da Sociedade Civil</h1>
+                    <img src="img/logo.png"/>
                 </div>
                 <div id='Menu-Superior'>
                     <Menu/>
