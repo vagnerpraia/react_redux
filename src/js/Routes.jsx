@@ -7,20 +7,46 @@ import Index from 'component/page/Index'
 import Apoio from 'component/page/Apoio'
 import BaseDados from 'component/page/BaseDados'
 import Cadastro from 'component/page/Cadastro'
+import Colabore from 'component/page/Colabore'
+import Contato from 'component/page/Contato'
+import DadosIndicadores from 'component/page/DadosIndicadores'
+import Editais from 'component/page/Editais'
+import Equipe from 'component/page/Equipe'
+import Glossario from 'component/page/Glossario'
+import Links from 'component/page/Links'
+import Mapa from 'component/page/Mapa'
+import Metodologia from 'component/page/Metodologia'
+import PerguntasFrequentes from 'component/page/PerguntasFrequentes'
 import Sobre from 'component/page/Sobre'
+import Tutoriais from 'component/page/Tutoriais'
+import Versao from 'component/page/Versao'
 
 export default class Routes extends Component {
+    carregarPagina(componente){
+        return <App pagina={componente}/>
+    }
+
     render(){
         return(
             <HashRouter>
                 <Switch>
-                    <Route path='/' exact render={() => <App pagina={<Index/>}/>}/>
-                    <Route path='/index' render={() => <App pagina={<Index/>}/>}/>
-
-                    <Route path='/apoio' render={() => <App pagina={<Apoio/>}/>}/>
-                    <Route path='/BaseDados' render={() => <App pagina={<BaseDados/>}/>}/>
-                    <Route path='/Cadastro' render={() => <App pagina={<Cadastro/>}/>}/>
-                    <Route path='/sobre' render={() => <App pagina={<Sobre/>}/>}/>
+                    <Route path='/' exact render={() => this.carregarPagina(<Index/>)}/>
+                    <Route path='/apoio' exact render={() => this.carregarPagina(<Apoio/>)}/>
+                    <Route path='/basedados' exact render={() => this.carregarPagina(<BaseDados/>)}/>
+                    <Route path='/cadastro' exact render={() => this.carregarPagina(<Cadastro/>)}/>
+                    <Route path='/colabore' exact render={() => this.carregarPagina(<Colabore/>)}/>
+                    <Route path='/contato' exact render={() => this.carregarPagina(<Contato/>)}/>
+                    <Route path='/dadosindicadores' exact render={() => this.carregarPagina(<DadosIndicadores/>)}/>
+                    <Route path='/editais' exact render={() => this.carregarPagina(<Editais/>)}/>
+                    <Route path='/equipe' exact render={() => this.carregarPagina(<Equipe/>)}/>
+                    <Route path='/glossario' exact render={() => this.carregarPagina(<Glossario/>)}/>
+                    <Route path='/links' exact render={() => this.carregarPagina(<Links/>)}/>
+                    <Route path='/mapa' exact render={() => this.carregarPagina(<Mapa/>)}/>
+                    <Route path='/metodologia' exact render={() => this.carregarPagina(<Metodologia/>)}/>
+                    <Route path='/perguntasfrequentes' exact render={() => this.carregarPagina(<PerguntasFrequentes/>)}/>
+                    <Route path='/sobre' render={() => this.carregarPagina(<Sobre/>)}/>
+                    <Route path='/tutoriais' render={() => this.carregarPagina(<Tutoriais/>)}/>
+                    <Route path='/versao' render={() => this.carregarPagina(<Versao/>)}/>
 
                     <Redirect from='*' to='/' />
                 </Switch>
