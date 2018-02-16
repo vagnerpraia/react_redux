@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Redirect } from 'react-router'
+import { Redirect, Switch } from 'react-router'
 import { HashRouter, Route } from 'react-router-dom'
 
 import App from 'App'

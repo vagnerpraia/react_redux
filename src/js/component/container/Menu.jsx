@@ -7,16 +7,19 @@ export default class Menu extends Component {
                 <nav>
                     <ul>
                         <li>
-                            <a href='#'>Home</a>
+                            <a href='/#'>Home</a>
                         </li>
                         <li>
-                            <a href='#'>O Mapa</a>
+                            <a href='/#mapa'>O Mapa</a>
                         </li>
                         <li>
-                            <a href='#'>Contato</a>
+                            <a href='/#contato'>Contato</a>
                         </li>
                         <li>
-                            <a href='#'>Entrar</a>
+                            <a href='/#cadastro'>Cadastro</a>
+                        </li>
+                        <li>
+                            <a href='/#login'>Entrar</a>
                         </li>
                     </ul>
                 </nav>
