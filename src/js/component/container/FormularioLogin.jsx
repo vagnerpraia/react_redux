@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { manipularTecla, manipularTeclaComControl } from 'util/manipulacaoTeclado'
+import { manipularTecla } from 'util/manipulacaoTeclado'
 
 import Button from 'basic/Button'
 import Input from 'basic/Input'
@@ -32,11 +32,11 @@ export default class FormularioLogin extends Component {
         let token = {}
         let mensagem = ''
 
-        if(this.state.email && this.state.senha){
-            if(this.state.email == '1' && this.state.senha == '1'){
+        if(this.state.emailLogin && this.state.senhaLogin){
+            if(this.state.emailLogin == '1' && this.state.senhaLogin == '1'){
                 mensagem = ''
                 token = '123456abc'
-            }else if(this.state.email == '2' && this.state.senha == '2'){
+            }else if(this.state.emailLogin == '2' && this.state.senhaLogin == '2'){
                 token = 'abc123456'
             }else{
                 mensagem = 'E-mail e/ou senha incorreto(s).'
@@ -45,8 +45,6 @@ export default class FormularioLogin extends Component {
             mensagem = 'Necessário informar e-mail e senha.'
         }
 
-        console.log('Mensagem: ' + mensagem)
-
         this.setState({resposta: {mensagem: mensagem}});
     }
 
@@ -54,10 +52,10 @@ export default class FormularioLogin extends Component {
         return(
             <div id='FormularioLogin'>
                 <Input type='text' id='emailLogin' label='E-mail' placeholder='E-mail' value={this.state.email}
-                    obrigatorio={true} onChange={this.atualizarEstado} onKeyUp={this.manipularTeclaEnter}/>
+                    obrigatorio={true} onChange={this.atualizarEstado} onKeyDown={this.manipularTeclaEnter}/>
 
                 <Input type='password' id='senhaLogin' label='Senha' placeholder='Senha' value={this.state.senha} 
-                    obrigatorio={true} onChange={this.atualizarEstado} onKeyUp={this.manipularTeclaEnter}/>
+                    obrigatorio={true} onChange={this.atualizarEstado} onKeyDown={this.manipularTeclaEnter}/>
 
                 <Button value='Entrar' onClick={this.entrar}/>
                 

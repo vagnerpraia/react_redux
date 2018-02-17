@@ -11,13 +11,7 @@ export function manipularTeclaComAlt(evento, tecla, acao){
 }
 
 export function manipularTeclaComControl(evento, tecla, acao){
-    if(evento.key === tecla.toLowerCase() && evento.controlKey){
-        acao()
-    }
-}
-
-export function manipularTeclaComShift(evento, tecla, acao){
-    if(evento.key === tecla.toLowerCase() && evento.shiftKey){
+    if(evento.key === tecla.toLowerCase() && evento.ctrlKey){
         acao()
     }
 }

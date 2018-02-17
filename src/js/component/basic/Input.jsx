@@ -14,7 +14,7 @@ export default props => (
         </If>
         <div>
             <input type={props.type} id={props.id} name={props.name} className={props.class} placeholder={props.placeholder} 
-                value={props.value} onChange={props.onChange} onKeyUp={props.onKeyUp}/>
+                value={props.value} onChange={props.onChange} onKeyDown={props.onKeyDown}/>
             <If teste={props.fonteDados}>
                 <If teste={props.fonteDados == 'Representante de OSC'}>
                     <img src="img/fonte_representante_osc.png"/>
