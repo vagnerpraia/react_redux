@@ -16,8 +16,17 @@ module.exports = {
         new ExtractTextPlugin('app.css')
     ],
     resolve: {
-        modules: [path.resolve(__dirname, 'src/js'), path.resolve(__dirname, 'src/css'), 'node_modules'],
-        extensions: ['.jsx', '.js', '.css']
+        modules: [
+            path.resolve(__dirname, 'src/js'), 
+            path.resolve(__dirname, 'src/js/component'), 
+            path.resolve(__dirname, 'src/css'), 
+            'node_modules'
+        ],
+        extensions: [
+            '.jsx', 
+            '.js', 
+            '.css'
+        ]
     },
     module: {
         loaders: [
