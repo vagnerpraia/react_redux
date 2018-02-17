@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import BarraAcessibilidade from 'component/container/BarraAcessibilidade'
 import Menu from 'component/container/Menu'
-import Login from 'component/container/Login'
+import FormularioLogin from 'component/container/FormularioLogin'
 
 export default class Superior extends Component {
     render(){
@@ -24,7 +24,7 @@ export default class Superior extends Component {
                     <Menu/>
                 </div>
                 <div id='Login-Superior'>
-                    <Login/>
+                    <FormularioLogin/>
                 </div>
             </div>
         )

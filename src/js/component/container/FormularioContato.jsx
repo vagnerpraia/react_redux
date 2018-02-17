@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 
-import Formulario from 'component/basic/Formulario'
-import { Basico, Avancado } from 'component/basic/EntradaTexto'
+import Button from 'component/basic/Button'
+import Input from 'component/basic/Input'
 
 export default class FormularioContato extends Component {
     constructor(props){
         super(props)
 
         this.state = {
-            assunto: '',
-            nomeUsuario: '',
-            email: '',
-            mensagem: '',
+            assuntoContato: '',
+            nomeContato: '',
+            emailContato: '',
+            mensagemContato: '',
             resposta: {}
         }
 
@@ -20,7 +20,7 @@ export default class FormularioContato extends Component {
     }
 
     atualizarEstado(evento){
-        this.setState({[evento.target.name]: evento.target.value});
+        this.setState({[evento.target.id]: evento.target.value});
     }
 
     enviarContato(){
@@ -33,7 +33,7 @@ export default class FormularioContato extends Component {
             <div id='FormularioContato'>
                 <div>
                     <label>Como podemos ajudar?</label>
-                    <select id='assunto' name='assunto' value={this.state.assunto}>
+                    <select id='assuntoContato' name='assunto' value={this.state.assunto}>
                         <option value=''>Selecione o assunto</option>
                         <option value='1'>Cadastro Município-Estado</option>
                         <option value='2'>Cadastro Representante</option>
@@ -45,21 +45,20 @@ export default class FormularioContato extends Component {
                         <option value='8'>Outros</option>
                     </select>
                 </div>
-                <div>
-                    <label>Nome:</label>
-                    <input type='text' id='nome' name='nome' placeholder='Nome'/>
-                </div>
-                <div>
-                    <label>E-mail: <span>(Campo Obrigatório)</span></label>
-                    <input type='text' id='email' name='email' placeholder='E-mail'/>
-                </div>
+
+                <Input type='text' id='nomeContato' label='Nome' placeholder='Nome' value={this.state.nome} 
+                    onChange={this.atualizarEstado}/>
+
+                <Input type='text' id='emailContato' label='E-mail' placeholder='E-mail' value={this.state.email} 
+                    obrigatorio={true} onChange={this.atualizarEstado}/>
+                    
                 <div>
                     <label>Mensagem:</label>
-                    <textarea id="mensagem" name='mensagem' placeholder='Mensagem'/>
+                    <textarea id="mensagemContato" placeholder='Mensagem'/>
                 </div>
-                <div>
-                    <input type='button' id='enviarContato' onClick={this.enviarContato} value='Enviar'/>
-                </div>
+                
+                <Button value='Enviar' onClick={this.enviarContato}/>
+                
                 <div>
                     <span id='mensagemResposta'>{this.state.resposta.mensagem}</span>
                 </div>
