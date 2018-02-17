@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import Button from 'component/basic/Button'
-import Input from 'component/basic/Input'
+import Button from 'basic/Button'
+import Input from 'basic/Input'
 
 export default class FormularioLogin extends Component {
     constructor(props){

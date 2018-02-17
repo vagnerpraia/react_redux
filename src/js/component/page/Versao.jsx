@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import TituloSecao from 'component/basic/TituloSecao'
+import TituloSecao from 'basic/TituloSecao'
 
 export default class Versao extends Component {
     render(){

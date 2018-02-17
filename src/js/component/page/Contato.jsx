@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import TituloSecao from 'component/basic/TituloSecao'
-import TituloSubsecao from 'component/basic/TituloSubsecao'
-import FormularioContato from 'component/container/FormularioContato'
+import TituloSecao from 'basic/TituloSecao'
+import TituloSubsecao from 'basic/TituloSubsecao'
+import FormularioContato from 'container/FormularioContato'
 
 export default class Contato extends Component {
     render(){
