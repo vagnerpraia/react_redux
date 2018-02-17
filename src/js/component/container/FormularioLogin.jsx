@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { manipularTecla, manipularTeclaComControl } from 'util/manipulacaoTeclado'
+
 import Button from 'basic/Button'
 import Input from 'basic/Input'
 
@@ -14,11 +16,16 @@ export default class FormularioLogin extends Component {
         }
 
         this.atualizarEstado = this.atualizarEstado.bind(this)
+        this.manipularTeclaEnter = this.manipularTeclaEnter.bind(this)
         this.entrar = this.entrar.bind(this)
     }
 
     atualizarEstado(evento){
         this.setState({[evento.target.id]: evento.target.value})
+    }
+
+    manipularTeclaEnter(evento){
+        manipularTecla(evento, 'Enter', this.entrar)
     }
 
     entrar(){
@@ -38,18 +45,19 @@ export default class FormularioLogin extends Component {
             mensagem = 'Necessário informar e-mail e senha.'
         }
 
+        console.log('Mensagem: ' + mensagem)
+
         this.setState({resposta: {mensagem: mensagem}});
-        console.log(this.state)
     }
 
     render(){
         return(
             <div id='FormularioLogin'>
                 <Input type='text' id='emailLogin' label='E-mail' placeholder='E-mail' value={this.state.email}
-                    obrigatorio={true} onChange={this.atualizarEstado}/>
+                    obrigatorio={true} onChange={this.atualizarEstado} onKeyUp={this.manipularTeclaEnter}/>
 
                 <Input type='password' id='senhaLogin' label='Senha' placeholder='Senha' value={this.state.senha} 
-                    obrigatorio={true} onChange={this.atualizarEstado}/>
+                    obrigatorio={true} onChange={this.atualizarEstado} onKeyUp={this.manipularTeclaEnter}/>
 
                 <Button value='Entrar' onClick={this.entrar}/>
                 
