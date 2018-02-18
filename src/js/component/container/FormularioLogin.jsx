@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import axios from 'axios';
+
 import { manipularTecla } from 'util/manipulacaoTeclado'
 
 import Button from 'basic/Button'
@@ -33,14 +35,33 @@ export default class FormularioLogin extends Component {
         let mensagem = ''
 
         if(this.state.emailLogin && this.state.senhaLogin){
+            axios.post({
+                method: 'post',
+                baseURL: 'http://localhost:8383/api/',
+                url: '/login',
+                data: {
+                    tx_email_usuario: "teste2@gmail.com",
+                    tx_senha_usuario: "123456"
+                }
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+            /*
             if(this.state.emailLogin == '1' && this.state.senhaLogin == '1'){
-                mensagem = ''
+                mensagem = 'Representante de OSC'
                 token = '123456abc'
             }else if(this.state.emailLogin == '2' && this.state.senhaLogin == '2'){
+                mensagem = 'Representante de Governo'
                 token = 'abc123456'
             }else{
                 mensagem = 'E-mail e/ou senha incorreto(s).'
             }
+            */
         }else{
             mensagem = 'Necessário informar e-mail e senha.'
         }
@@ -60,7 +81,7 @@ export default class FormularioLogin extends Component {
                 <Button value='Entrar' onClick={this.entrar}/>
                 
                 <div>
-                    <span>{this.state.mensagem}</span>
+                    <span>{this.state.resposta.mensagem}</span>
                 </div>
             </div>
         )
