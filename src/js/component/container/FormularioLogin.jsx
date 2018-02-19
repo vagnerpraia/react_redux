@@ -14,7 +14,7 @@ export default class FormularioLogin extends Component {
         this.state = {
             emailLogin: '',
             senhaLogin: '',
-            resposta: {}
+            mensagemLogin: ''
         }
 
         this.atualizarEstado = this.atualizarEstado.bind(this)
@@ -31,42 +31,44 @@ export default class FormularioLogin extends Component {
     }
 
     entrar(){
-        let token = {}
-        let mensagem = ''
-
         if(this.state.emailLogin && this.state.senhaLogin){
-            axios.post({
-                method: 'post',
-                baseURL: 'http://localhost:8383/api/',
-                url: '/login',
-                data: {
-                    tx_email_usuario: "teste2@gmail.com",
-                    tx_senha_usuario: "123456"
-                }
-            })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            const scheme = 'http'
+            const host = 'http://localhost'
+            const port = '8383'
+            const basePath = 'api'
+            const dataType = 'application/json'
 
-            /*
-            if(this.state.emailLogin == '1' && this.state.senhaLogin == '1'){
-                mensagem = 'Representante de OSC'
-                token = '123456abc'
-            }else if(this.state.emailLogin == '2' && this.state.senhaLogin == '2'){
-                mensagem = 'Representante de Governo'
-                token = 'abc123456'
-            }else{
-                mensagem = 'E-mail e/ou senha incorreto(s).'
+            const data = {
+                tx_email_usuario: this.state.emailLogin,
+                tx_senha_usuario: this.state.senhaLogin
             }
-            */
-        }else{
-            mensagem = 'Necessário informar e-mail e senha.'
-        }
 
-        this.setState({resposta: {mensagem: mensagem}});
+            const headers = {
+                headers: {
+                    'Accept': dataType,
+                    'Content-Type': dataType
+                }
+            }
+
+            axios({
+                method: 'post',
+                baseURL: API_SCHEME + '://' + process.env.API_HOST + ':' + process.env.API_PORT + '/' + process.env.API_BASE_PATH,
+                url: '/user/login',
+                data: data
+            })
+            .then((response) => {
+                if(response.code === 200){
+                    // TODO: Armazenar token e redirecionar usuário
+                }
+                this.setState({mensagemLogin: response.data.msg});
+            })
+            .catch((error) => {
+                this.setState({mensagemLogin: error.response.data.msg});
+            })
+
+        }else{
+            this.setState({mensagemLogin: 'Necessário informar e-mail e senha.'});
+        }
     }
 
     render(){
@@ -79,9 +81,9 @@ export default class FormularioLogin extends Component {
                     obrigatorio={true} onChange={this.atualizarEstado} onKeyDown={this.manipularTeclaEnter}/>
 
                 <Button value='Entrar' onClick={this.entrar}/>
-                
-                <div>
-                    <span>{this.state.resposta.mensagem}</span>
+
+                <div id='mensagemLogin'>
+                    <span>{this.state.mensagemLogin}</span>
                 </div>
             </div>
         )
