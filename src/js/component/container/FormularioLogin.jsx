@@ -33,12 +33,12 @@ export default class FormularioLogin extends Component {
     entrar(){
         if(this.state.emailLogin && this.state.senhaLogin){
             const scheme = 'http'
-            const host = 'http://localhost'
+            const host = 'localhost'
             const port = '8383'
             const basePath = 'api'
             const dataType = 'application/json'
 
-            const data = {
+            const dataRequest = {
                 tx_email_usuario: this.state.emailLogin,
                 tx_senha_usuario: this.state.senhaLogin
             }
@@ -49,12 +49,12 @@ export default class FormularioLogin extends Component {
                     'Content-Type': dataType
                 }
             }
-
+            console.log(dataRequest)
             axios({
                 method: 'post',
-                baseURL: API_SCHEME + '://' + process.env.API_HOST + ':' + process.env.API_PORT + '/' + process.env.API_BASE_PATH,
+                baseURL: scheme + '://' + host + ':' + port + '/' + basePath,
                 url: '/user/login',
-                data: data
+                data: dataRequest
             })
             .then((response) => {
                 if(response.code === 200){
@@ -63,6 +63,7 @@ export default class FormularioLogin extends Component {
                 this.setState({mensagemLogin: response.data.msg});
             })
             .catch((error) => {
+                console.log(error.response)
                 this.setState({mensagemLogin: error.response.data.msg});
             })
 
