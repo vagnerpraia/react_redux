@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 
-import axios from 'axios';
+import { connect } from 'react-redux'
+import axios from 'axios'
 
 import { manipularTecla } from 'util/manipulacaoTeclado'
 
 import Button from 'basic/Button'
 import Input from 'basic/Input'
 
-export default class FormularioLogin extends Component {
+class FormularioLogin extends Component {
     constructor(props){
         super(props)
 
@@ -90,3 +91,9 @@ export default class FormularioLogin extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    usuario: state.usuario,
+})
+
+export default connect(mapStateToProps)(FormularioLogin)
