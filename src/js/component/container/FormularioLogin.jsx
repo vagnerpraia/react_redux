@@ -4,6 +4,8 @@ import axios from 'axios'
 import { manipularTecla } from 'util/manipulacaoTeclado'
 import Button from 'basic/Button'
 import Input from 'basic/Input'
+import { atualizarEmail, atualizarSenha } from 'storage/usuario/usuarioAction'
+import { bindActionCreators } from 'redux'
 
 class FormularioLogin extends Component {
     constructor(props){
@@ -13,13 +15,8 @@ class FormularioLogin extends Component {
             mensagem: ''
         }
 
-        this.atualizarEstado = this.atualizarEstado.bind(this)
         this.manipularTeclaEnter = this.manipularTeclaEnter.bind(this)
         this.entrar = this.entrar.bind(this)
-    }
-
-    atualizarEstado(evento){
-        this.setState({[evento.target.id]: evento.target.value})
     }
 
     manipularTeclaEnter(evento){
@@ -70,15 +67,15 @@ class FormularioLogin extends Component {
     render(){
         return(
             <div id='FormularioLogin'>
-                <Input type='text' id='emailLogin' label='E-mail' placeholder='E-mail' value={this.props.usuario.email}
-                    obrigatorio={true} onChange={this.atualizarEstado} onKeyDown={this.manipularTeclaEnter}/>
+                <Input type='text' label='E-mail' placeholder='E-mail' value={this.props.usuario.email}
+                    obrigatorio={true} onChange={this.props.atualizarEmail} onKeyDown={this.manipularTeclaEnter}/>
 
-                <Input type='password' id='senhaLogin' label='Senha' placeholder='Senha' value={this.props.usuario.senha} 
-                    obrigatorio={true} onChange={this.atualizarEstado} onKeyDown={this.manipularTeclaEnter}/>
+                <Input type='password' label='Senha' placeholder='Senha' value={this.props.usuario.senha} 
+                    obrigatorio={true} onChange={this.props.atualizarSenha} onKeyDown={this.manipularTeclaEnter}/>
 
                 <Button value='Entrar' onClick={this.entrar}/>
 
-                <div id='mensagemLogin'>
+                <div>
                     <span>{this.state.mensagem}</span>
                 </div>
             </div>
@@ -86,13 +83,14 @@ class FormularioLogin extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log(state)
-    return {
-        usuario: state.usuario
-    }
+const mapStateToProps = (state) => ({
+    usuario: state.usuario
+})
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ atualizarEmail, atualizarSenha }, dispatch)
 }
 
-const connectusuario = connect(mapStateToProps)
+const connectComponent = connect(mapStateToProps, mapDispatchToProps)
 
-export default connectusuario(FormularioLogin)
+export default connectComponent(FormularioLogin)
