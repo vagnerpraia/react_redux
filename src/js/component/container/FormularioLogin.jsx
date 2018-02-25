@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import axios from 'axios'
 import { manipularTecla } from 'util/manipulacaoTeclado'
 import Button from 'basic/Button'
 import Input from 'basic/Input'
-import { atualizarEmail, atualizarSenha } from 'dao/redux/usuario/usuarioAction'
 import { bindActionCreators } from 'redux'
+import { atualizarEmail, atualizarSenha } from 'dao/redux/usuario/usuarioAction'
 import { login } from 'dao/api/usuario/login'
 
 class FormularioLogin extends Component {
@@ -26,8 +25,8 @@ class FormularioLogin extends Component {
 
     entrar(){
         if(this.props.usuario.email && this.props.usuario.senha){
-            const response = login(this.props.usuario.email, this.props.usuario.senha)
-            Promise.resolve(response)
+            const apiCall = login(this.props.usuario.email, this.props.usuario.senha)
+            Promise.resolve(apiCall)
                 .then((response) => {
                     console.log(response)
                     if(response.code === 200){
@@ -36,7 +35,6 @@ class FormularioLogin extends Component {
                     this.setState({mensagem: response.data.msg});
                 })
                 .catch((error) => {
-                    console.log(error)
                     this.setState({mensagem: error.response.data.msg});
                 })
         }else{
