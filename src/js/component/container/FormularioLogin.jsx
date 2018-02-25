@@ -4,8 +4,9 @@ import axios from 'axios'
 import { manipularTecla } from 'util/manipulacaoTeclado'
 import Button from 'basic/Button'
 import Input from 'basic/Input'
-import { atualizarEmail, atualizarSenha } from 'storage/usuario/usuarioAction'
+import { atualizarEmail, atualizarSenha } from 'dao/redux/usuario/usuarioAction'
 import { bindActionCreators } from 'redux'
+import { login } from 'dao/api/usuario/login'
 
 class FormularioLogin extends Component {
     constructor(props){
@@ -25,40 +26,19 @@ class FormularioLogin extends Component {
 
     entrar(){
         if(this.props.usuario.email && this.props.usuario.senha){
-            const scheme = 'http'
-            const host = 'localhost'
-            const port = '8383'
-            const basePath = 'api'
-            const dataType = 'application/json'
-
-            const dataRequest = {
-                tx_email_usuario: this.props.usuario.email,
-                tx_senha_usuario: this.props.usuario.senha
-            }
-
-            const headers = {
-                headers: {
-                    'Accept': dataType,
-                    'Content-Type': dataType
-                }
-            }
-            
-            axios({
-                method: 'post',
-                baseURL: scheme + '://' + host + ':' + port + '/' + basePath,
-                url: '/user/login',
-                data: dataRequest
-            })
-            .then((response) => {
-                if(response.code === 200){
-                    // TODO: Armazenar token e redirecionar usuário
-                }
-                this.setState({mensagem: response.data.msg});
-            })
-            .catch((error) => {
-                this.setState({mensagem: error.response.data.msg});
-            })
-
+            const response = login(this.props.usuario.email, this.props.usuario.senha)
+            Promise.resolve(response)
+                .then((response) => {
+                    console.log(response)
+                    if(response.code === 200){
+                        // TODO: Armazenar token e redirecionar usuário
+                    }
+                    this.setState({mensagem: response.data.msg});
+                })
+                .catch((error) => {
+                    console.log(error)
+                    this.setState({mensagem: error.response.data.msg});
+                })
         }else{
             this.setState({mensagem: 'Necessário informar e-mail e senha.'});
         }

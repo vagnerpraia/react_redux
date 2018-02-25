@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import usuarioReducer from 'storage/usuario/usuarioReducer'
+import usuarioReducer from 'dao/redux/usuario/usuarioReducer'
 
 export default combineReducers({
     usuario: usuarioReducer

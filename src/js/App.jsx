@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 
-import store from 'storage/store'
+import store from 'dao/redux/store'
 import Routes from 'startup/Routes'
 
 export default class App extends Component {
