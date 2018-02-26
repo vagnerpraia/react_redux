@@ -4,8 +4,7 @@ import { manipularTecla } from 'util/manipulacaoTeclado'
 import Button from 'basic/Button'
 import Input from 'basic/Input'
 import { bindActionCreators } from 'redux'
-import { atualizarEmail, atualizarSenha } from 'dao/redux/usuario/usuarioAction'
-import { login } from 'dao/api/usuario/login'
+import { atualizarEmail, atualizarSenha, login } from 'dao/usuario/usuarioAction'
 
 class FormularioLogin extends Component {
     constructor(props){
@@ -25,8 +24,10 @@ class FormularioLogin extends Component {
 
     entrar(){
         if(this.props.usuario.email && this.props.usuario.senha){
-            const apiCall = login(this.props.usuario.email, this.props.usuario.senha)
-            Promise.resolve(apiCall)
+            this.props.login(this.props.usuario)
+            /*
+            const request = login(this.props.usuario)
+            Promise.resolve(request)
                 .then((response) => {
                     console.log(response)
                     if(response.code === 200){
@@ -35,10 +36,12 @@ class FormularioLogin extends Component {
                     this.setState({mensagem: response.data.msg});
                 })
                 .catch((error) => {
-                    this.setState({mensagem: error.response.data.msg});
+                    console.log(error)
+                    //this.setState({mensagem: error.response.data.msg});
                 })
+            */
         }else{
-            this.setState({mensagem: 'Necessário informar e-mail e senha.'});
+            this.setState({mensagem: this.props.mensagem});
         }
     }
 
@@ -54,7 +57,7 @@ class FormularioLogin extends Component {
                 <Button value='Entrar' onClick={this.entrar}/>
 
                 <div>
-                    <span>{this.state.mensagem}</span>
+                    <span>{this.props.mensagem}</span>
                 </div>
             </div>
         )
@@ -62,11 +65,12 @@ class FormularioLogin extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    usuario: state.usuario
+    usuario: state.login.usuario,
+    mensagem: state.login.mensagem
 })
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ atualizarEmail, atualizarSenha }, dispatch)
+    return bindActionCreators({ atualizarEmail, atualizarSenha, login }, dispatch)
 }
 
 const connectComponent = connect(mapStateToProps, mapDispatchToProps)

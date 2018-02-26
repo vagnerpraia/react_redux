@@ -1,3 +1,5 @@
+import api from 'dao/api'
+
 export const atualizarEmail = (e) => (
     {
         type: 'atualizar',
@@ -13,3 +15,11 @@ export const atualizarSenha = (e) => (
         payload: e.target.value
     }
 )
+
+export const login = (state) => {
+    const request = api('post', 'user/login', state)
+    return {
+        type: 'login',
+        payload: request
+    }
+}
